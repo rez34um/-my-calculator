@@ -1,0 +1,104 @@
+<!DOCTYPE html>  <html lang="fa">  
+<head>  
+<meta charset="UTF-8">  
+<title>ماشین حساب حرفه‌ای</title>  <style>  
+body {  
+  background: #101010;  
+  color: white;  
+  font-family: Arial;  
+  display: flex;  
+  justify-content: center;  
+  padding-top: 40px;  
+}  
+  
+.calculator {  
+  background: #202020;  
+  width: 300px;  
+  padding: 20px;  
+  border-radius: 30px;  
+  text-align: center;  
+}  
+  
+#display {  
+  background: #111;  
+  padding: 25px 10px;  
+  font-size: 30px;  
+  border-radius: 15px;  
+  margin-bottom: 20px;  
+  min-height: 35px;  
+}  
+  
+button {  
+  width: 60px;  
+  height: 60px;  
+  border: none;  
+  border-radius: 50%;  
+  margin: 5px;  
+  font-size: 22px;  
+  background: #444;  
+  color: white;  
+}  
+  
+.number { background: #777; }  
+.operator { background: #ff9500; }  
+.equal { background: #28a745; }  
+.clear { background: #d94c4c; }  
+  
+</style>  </head>  <body>  <div class="calculator">  <h2>MY CALCULATOR</h2>  <div id="display">0</div>  <button class="number" onclick="chooseNumber(20)">20</button>
+<button class="number" onclick="chooseNumber(30)">30</button>
+
+<br>  <button class="operator" onclick="chooseOperation('+')">+</button>
+<button class="operator" onclick="chooseOperation('-')">−</button>
+<button class="operator" onclick="chooseOperation('*')">×</button>
+<button class="operator" onclick="chooseOperation('/')">÷</button>
+
+<br>  <button class="equal" onclick="calculate()">=</button>
+<button class="clear" onclick="clearAll()">AC</button>
+
+</div>  <script>  
+  
+let first = null;  
+let second = null;  
+let operation = null;  
+  
+function chooseNumber(n) {  
+  if (operation === null) {  
+    first = n;  
+    document.getElementById("display").innerText = n;  
+  } else {  
+    second = n;  
+    document.getElementById("display").innerText =  
+      first + " " + operation + " " + second;  
+  }  
+}  
+  
+function chooseOperation(op) {  
+  if (first !== null) {  
+    operation = op;  
+    document.getElementById("display").innerText =  
+      first + " " + op;  
+  }  
+}  
+  
+function calculate() {  
+  if (first === null || second === null || operation === null) return;  
+  
+  let result;  
+  
+  if (operation === '+') result = first + second;  
+  if (operation === '-') result = first - second;  
+  if (operation === '*') result = first * second;  
+  if (operation === '/') result = first / second;  
+  
+  document.getElementById("display").innerText = result;  
+}  
+  
+function clearAll() {  
+  first = null;  
+  second = null;  
+  operation = null;  
+  document.getElementById("display").innerText = "0";  
+}  
+  
+</script>  </body>  
+</html>  
